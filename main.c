@@ -4,7 +4,7 @@
 
 int main(){
 
-    int op,i,j;
+    int op,i;
     int sair = 0;
     VetorPrincipal vet[10];
 
@@ -22,8 +22,13 @@ int main(){
 
                 if (vet[i].auxiliar == NULL){
                     printf("Nosso vetor ainda nao tem um tamanho. Digite um tamanho para ele:\n");
-                    scanf("%d", &j);
-                    vet[i].auxiliar = (int*)malloc(sizeof(int)*j);
+                    scanf("%d", &vet[i].tamanho);
+                    vet[i].auxiliar = (int*)malloc(sizeof(int)*vet[i].tamanho);
+                }
+
+                if (vet[i].auxiliar[vet[i].tamanho-1] != NULL){
+                    printf("O vetor esta cheio, e necessario alocar mais espaço.\n");
+                    break;
                 }
 
 
