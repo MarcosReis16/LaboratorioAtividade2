@@ -13,6 +13,11 @@ int main(){
         op = menu();
         switch (op){
             case 0:{
+                for(i=0;i<=9;i++){
+                    if(vet[i].auxiliar != NULL){
+                        free(vet[i].auxiliar);
+                    }
+                }
                 sair =1;
                 break;
             }
