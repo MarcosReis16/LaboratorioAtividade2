@@ -1,8 +1,8 @@
 int menu();
 
 typedef struct vetorprincipal{
-    int *auxiliar;
-    int tamanho;
+    int *auxiliar,tamanho,cont;
+    int *ptr;
 
 } VetorPrincipal;
 

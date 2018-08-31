@@ -4,7 +4,7 @@
 
 int main(){
 
-    int op,i;
+    int op,i,valor;
     int sair = 0;
     VetorPrincipal vet[10];
 
@@ -29,11 +29,17 @@ int main(){
                     printf("Nosso vetor ainda nao tem um tamanho. Digite um tamanho para ele:\n");
                     scanf("%d", &vet[i].tamanho);
                     vet[i].auxiliar = (int*)malloc(sizeof(int)*vet[i].tamanho);
+                    vet[i].ptr = vet[i].auxiliar;
+                    printf("Digite um valor para inserir:\n");
+                    scanf("%d",&valor);
+                    *vet[i]->ptr = valor;
+                    ptr = ptr+1;
                 }
-
-                if (vet[i].auxiliar[vet[i].tamanho-1] != NULL){
-                    printf("O vetor esta cheio, e necessario alocar mais espaço.\n");
-                    break;
+                else{
+                    printf("Digite um valor para inserir:\n");
+                    scanf("%d",&valor);
+                    *vet[i]->ptr = valor;
+                    ptr = ptr+1;
                 }
 
 
@@ -43,6 +49,17 @@ int main(){
 
             case 2:{ //excluir
                 //TODO
+                printf("Digite a posicao do vetor principal que deseja apagar um valor:\n");
+                scanf("%d", &i);
+                
+                if(vet[i].auxiliar == NULL){
+                    printf("Não existe um vetor alocado neste índice.");
+                }
+                else{
+                    printf("Escolha um valor para apagar do vetor");
+                    
+                }
+                
                 break;
             }
             default:{

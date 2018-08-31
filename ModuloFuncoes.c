@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 int menu(){
     int op;
     printf("Digite as opção desejada\n");
