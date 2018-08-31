@@ -13,3 +13,11 @@ int menu(){
     scanf("%d", &op);
     return op;
 }
+
+void alocarMemoria(VetorPrincipal *vet,int indice){
+        vet[indice]->auxiliar = (int*)malloc(sizeof(int)*vet[indice].tamanho);
+        if (vet[indice]->auxiliar == NULL){
+            exit(1);
+        }
+        vet[indice].cont++;
+}

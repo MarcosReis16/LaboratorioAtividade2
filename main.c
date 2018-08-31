@@ -28,18 +28,15 @@ int main(){
                 if (vet[i].auxiliar == NULL){
                     printf("Nosso vetor ainda nao tem um tamanho. Digite um tamanho para ele:\n");
                     scanf("%d", &vet[i].tamanho);
-                    vet[i].auxiliar = (int*)malloc(sizeof(int)*vet[i].tamanho);
-                    vet[i].ptr = vet[i].auxiliar;
+                    alocarMemoria(&vet,i);
+                    
                     printf("Digite um valor para inserir:\n");
                     scanf("%d",&valor);
-                    *vet[i]->ptr = valor;
-                    ptr = ptr+1;
+                    
                 }
                 else{
                     printf("Digite um valor para inserir:\n");
                     scanf("%d",&valor);
-                    *vet[i]->ptr = valor;
-                    ptr = ptr+1;
                 }
 
 

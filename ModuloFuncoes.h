@@ -1,8 +1,11 @@
 int menu();
+void alocarMemoria(VetorPrincipal *vet,int indice);
 
-typedef struct vetorprincipal{
+struct vetorprincipal{
     int *auxiliar,tamanho,cont;
     int *ptr;
 
-} VetorPrincipal;
+} ;
+
+typedef struct vetorprincipal VetorPrincipal;
 
