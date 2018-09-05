@@ -7,6 +7,9 @@ int main(){
     int op,i,valor;
     int sair = 0;
     VetorPrincipal vet[10];
+    for(i=0;i<10;i++){
+        vet[i].auxiliar = NULL;
+    }
 
 
     while (!sair){
@@ -22,24 +25,27 @@ int main(){
                 break;
             }
             case 1:{ //inserir
-                printf("Digite a posicao do vetor que deseja inserir um valor:\n");
+                printf("Digite a posicao (1-10) do vetor que deseja inserir um valor:\n");
                 scanf("%d", &i);
-
-                if (vet[i].auxiliar == NULL){
-                    printf("Nosso vetor ainda nao tem um tamanho. Digite um tamanho para ele:\n");
-                    scanf("%d", &vet[i].tamanho);
-                    alocarMemoria(&vet,i);
+    
+                if(i>=1 && i<=10){
                     
-                    printf("Digite um valor para inserir:\n");
-                    scanf("%d",&valor);
-                    
-                }
-                else{
-                    printf("Digite um valor para inserir:\n");
-                    scanf("%d",&valor);
-                }
-
-
+                        if (vet[i-1].auxiliar == NULL){
+                            printf("Nosso vetor ainda nao tem um tamanho. Digite um tamanho para ele:\n");
+                            scanf("%d", &vet[i-1].tamanho);
+                            alocarMemoria(&vet,i-1);
+                            
+                            printf("Digite um valor para inserir:\n");
+                            scanf("%d",&valor);
+                            
+                        }
+                        else{
+                            printf("Digite um valor para inserir:\n");
+                            scanf("%d",&valor);
+                        }
+                }else  
+                    printf("\nPosicao invalida\n");
+                
 
                 break;
             }
@@ -54,6 +60,7 @@ int main(){
                 }
                 else{
                     printf("Escolha um valor para apagar do vetor");
+                    scanf("%d",&i);
                     
                 }
                 

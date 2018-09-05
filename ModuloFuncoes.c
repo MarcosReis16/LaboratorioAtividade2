@@ -15,9 +15,17 @@ int menu(){
 }
 
 void alocarMemoria(VetorPrincipal *vet,int indice){
-        vet[indice]->auxiliar = (int*)malloc(sizeof(int)*vet[indice].tamanho);
-        if (vet[indice]->auxiliar == NULL){
-            exit(1);
-        }
-        vet[indice].cont++;
+    vet[indice]->auxiliar = (int*)malloc(sizeof(int)*vet[indice].tamanho);
+    if (vet[indice]->auxiliar == NULL){
+        exit(1);
+    }
+    vet[indice].cont++;
+}
+
+void realocarMemoria(VetorPrincipal *vet, int indice){
+    vet[indice]->auxiliar = (int*)realloc(vet[indice]->auxiliar,vet[indice].tamanho*sizeof(int))
+    if(vet[indice]->auxiliar == NULL){
+        exit(1);
+    }
+    vet[indice].cont++;
 }
