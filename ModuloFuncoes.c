@@ -38,10 +38,10 @@ void realocarMemoria(VetorPrincipal *vet, int indice){
 
 void apagaValorMemoria(VetorPrincipal *vet,int i, int valor){
     int j,k,troca;
-    for(j=0;vet[i].auxiliar[j]!=NULL;j++){
+    for(j=0;vet[i].auxiliar[j]<vet[i].auxiliar[vet[i].cont];j++){
         if(vet[i].auxiliar[j]==valor){
-            for(k=j;vet[i].auxiliar[k]!=NULL;k++){
-                if(vet[i].auxiliar[k+1]!=NULL){
+            for(k=j;vet[i].auxiliar[j]<vet[i].auxiliar[vet[i].cont];k++){
+                if(vet[i].auxiliar[k+1]!=vet[i].auxiliar[vet[i].cont]){
                     vet[i].auxiliar[k]=vet[i].auxiliar[k+1];
                 }
             }
