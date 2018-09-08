@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include "ModuloFuncoes.h"
 
 int main(){
@@ -27,25 +28,25 @@ int main(){
             case 1:{ //inserir
                 printf("Digite a posicao (1-10) do vetor que deseja inserir um valor:\n");
                 scanf("%d", &i);
-    
+
                 if(i>=1 && i<=10){
-                    
+
                         if (vet[i-1].auxiliar == NULL){
                             printf("Nosso vetor ainda nao tem um tamanho. Digite um tamanho para ele:\n");
                             scanf("%d", &vet[i-1].tamanho);
-                            alocarMemoria(&vet,i-1);
-                            
+                            alocarMemoria(vet,i-1);
+
                             printf("Digite um valor para inserir:\n");
                             scanf("%d",&valor);
-                            
+
                         }
                         else{
                             printf("Digite um valor para inserir:\n");
                             scanf("%d",&valor);
                         }
-                }else  
+                }else
                     printf("\nPosicao invalida\n");
-                
+
 
                 break;
             }
@@ -54,16 +55,15 @@ int main(){
                 //TODO
                 printf("Digite a posicao do vetor principal que deseja apagar um valor:\n");
                 scanf("%d", &i);
-                
+
                 if(vet[i].auxiliar == NULL){
                     printf("Não existe um vetor alocado neste índice.");
                 }
                 else{
                     printf("Escolha um valor para apagar do vetor");
-                    scanf("%d",&i);
-                    
+                    scanf("%d",&valor);
+                    apagaValorMemoria(vet,i,valor);
                 }
-                
                 break;
             }
             default:{
