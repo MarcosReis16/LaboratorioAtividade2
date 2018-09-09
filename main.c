@@ -10,6 +10,7 @@ int main(){
     VetorPrincipal vet[10];
     for(i=0;i<10;i++){
         vet[i].auxiliar = NULL;
+        vet[i].cont = 0;
     }
 
 
@@ -38,11 +39,18 @@ int main(){
 
                             printf("Digite um valor para inserir:\n");
                             scanf("%d",&valor);
+                            inserirValor(vet,i,valor);
 
                         }
                         else{
-                            printf("Digite um valor para inserir:\n");
-                            scanf("%d",&valor);
+                            if(vet[i].cont == vet[i].tamanho){
+                                printf("Nosso vetor ja atingiu seu limite, precisamos alocar mais espaço.\n");
+                            }
+                            else{
+                                printf("Digite um valor para inserir:\n");
+                                scanf("%d",&valor);
+                                inserirValor(vet,i,valor);
+                            }
                         }
                 }else
                     printf("\nPosicao invalida\n");
@@ -65,17 +73,32 @@ int main(){
                     apagaValorMemoria(vet,i,valor);
                 }
                 break;
+            case 3:{//listar
+                printf("Digite a posicao do vetor principal que deseja listar: \n");
+                scanf("%d",&i);
+
+                if(vet[i-1].auxiliar!=NULL)
+                    listaVetor(vet,i-1);
+                else
+                    printf("Este vetor esta vazio.\n");
+
+                break;
+            }
+            case 4:{
+                printf("Digite a opcao que deseja realocar espaço: \n");
+                scanf("%d",&i);
+
+                if(vet[i].auxiliar != NULL){
+                    printf("Digite o novo tamanho do vetor: \n");
+                    scanf("%d",&vet[i].tamanho);
+                    realocarMemoria(vet,i);
+                }
+            }
             }
             default:{
                 printf("opcao inválida\n");
             }
-
-
         }
-
-
     }
-
     return 0;
-
 }

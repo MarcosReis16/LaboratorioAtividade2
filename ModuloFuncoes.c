@@ -10,7 +10,7 @@ int menu(){
     printf("1 - Inserir\n");
     printf("2 - Excluir\n");
     printf("3 - Listar\n");
-    printf("4 - \n");
+    printf("4 - Redimensionar Espaço\n");
     printf("5 - \n");
     scanf("%d", &op);
     return op;
@@ -21,18 +21,13 @@ void alocarMemoria(VetorPrincipal *vet,int indice){
     if (vet[indice].auxiliar == NULL){
         exit(1);
     }
-    else{
-        vet[indice].cont++;
-    }
+
 }
 
 void realocarMemoria(VetorPrincipal *vet, int indice){
     vet[indice].auxiliar = (int*)realloc(vet[indice].auxiliar,vet[indice].tamanho*sizeof(int));
     if(vet[indice].auxiliar == NULL){
         exit(1);
-    }
-    else{
-        vet[indice].cont++;
     }
 }
 
@@ -49,4 +44,16 @@ void apagaValorMemoria(VetorPrincipal *vet,int i, int valor){
         break;
         }
     }
+}
+
+void listaVetor(VetorPrincipal *vet, int i){
+    printf("Temos %d elementos neste vetor.\n",vet[i].cont);
+    for(int j=0;j<vet[i].cont;j++){
+        printf("Valor: %d \n",vet[i].auxiliar[j]);
+    }
+}
+
+void inserirValor(VetorPrincipal *vet, int i, int valor){
+    vet[i].auxiliar[vet[i].cont]= valor;
+    vet[i].cont++;
 }
