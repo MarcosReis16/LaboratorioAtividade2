@@ -17,7 +17,7 @@ int menu(){
 }
 
 void alocarMemoria(VetorPrincipal *vet,int indice){
-    vet[indice].auxiliar = (int*)malloc(sizeof(int)*vet[indice].tamanho);
+    vet[indice].auxiliar = (int*)malloc(sizeof(int)*(vet[indice].tamanho));
     if (vet[indice].auxiliar == NULL){
         exit(1);
     }
@@ -55,5 +55,5 @@ void listaVetor(VetorPrincipal *vet, int i){
 
 void inserirValor(VetorPrincipal *vet, int i, int valor){
     vet[i].auxiliar[vet[i].cont]= valor;
-    vet[i].cont++;
+    vet[i].cont = vet[i].cont + 1;
 }

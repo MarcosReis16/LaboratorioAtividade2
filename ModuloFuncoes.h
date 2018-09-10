@@ -1,6 +1,6 @@
 struct vetorprincipal{
-    int *auxiliar,tamanho,cont;
-
+    int *auxiliar;
+    int tamanho,cont;
 } ;
 typedef struct vetorprincipal VetorPrincipal;
 

@@ -39,11 +39,11 @@ int main(){
 
                             printf("Digite um valor para inserir:\n");
                             scanf("%d",&valor);
-                            inserirValor(vet,i,valor);
+                            inserirValor(vet,i-1,valor);
 
                         }
                         else{
-                            if(vet[i].cont == vet[i].tamanho){
+                            if(vet[i-1].cont == vet[i-1].tamanho){
                                 printf("Nosso vetor ja atingiu seu limite, precisamos alocar mais espaço.\n");
                             }
                             else{
