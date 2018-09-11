@@ -11,7 +11,7 @@ int menu(){
     printf("2 - Excluir\n");
     printf("3 - Listar\n");
     printf("4 - Redimensionar Espaço\n");
-    printf("5 - \n");
+    printf("5 - Ordena posicao vetor\n");
     scanf("%d", &op);
     return op;
 }
@@ -32,7 +32,7 @@ void realocarMemoria(VetorPrincipal *vet, int indice){
 }
 
 void apagaValorMemoria(VetorPrincipal *vet,int i, int valor){
-    int j,k,troca;
+    int j,k;
     for(j=0;vet[i].auxiliar[j]<vet[i].auxiliar[vet[i].cont];j++){
         if(vet[i].auxiliar[j]==valor){
             for(k=j;vet[i].auxiliar[j]<vet[i].auxiliar[vet[i].cont];k++){
@@ -56,4 +56,27 @@ void listaVetor(VetorPrincipal *vet, int i){
 void inserirValor(VetorPrincipal *vet, int i, int valor){
     vet[i].auxiliar[vet[i].cont]= valor;
     vet[i].cont = vet[i].cont + 1;
+}
+
+void transfereConteudo(VetorPrincipal *vet,int i,int *vetorAlvo){
+    for(int j=0;j<vet[i].cont;j++){
+        vetorAlvo[j] = vet[i].auxiliar[j];
+    }
+}
+
+void insertionSort(int *vetor, int tamanho){
+    int i, j, aux;
+    for(i=1;i<tamanho;i++){
+        aux=vetor[i];
+        for(j=i;(j>0)&&(aux<vetor[j-1]);j--){
+            vetor[j]=vetor[j-1];
+        }
+        vetor[j]=aux;
+    }
+}
+
+void listaVetorOrdenado(int *vetor,int quantidade){
+    for(int i =0;i<quantidade;i++){
+        printf("%d\n",vetor[i]);
+    }
 }

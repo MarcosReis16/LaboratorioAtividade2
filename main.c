@@ -8,11 +8,14 @@ int main(){
     int op,i,valor,num;
     int sair = 0;
     VetorPrincipal vet[10];
+    int *vetor;
+
     for(i=0;i<10;i++){
         vet[i].auxiliar = NULL;
         vet[i].cont = 0;
         vet[i].tamanho = 0;
     }
+    vetor = NULL;
 
 
     while (!sair){
@@ -23,6 +26,9 @@ int main(){
                     if(vet[i].auxiliar != NULL){
                         free(vet[i].auxiliar);
                     }
+                }
+                if (vetor != NULL){
+                    free(vetor);
                 }
                 sair =1;
                 break;
@@ -86,13 +92,14 @@ int main(){
 
                 break;
 
-            case 4:
+            case 4: //realocar espaço
                 printf("Digite a posicao que deseja realocar espaço: \n");
                 scanf("%d",&i);
                 i=i-1;
                 if(vet[i].auxiliar != NULL){
-                    printf("Digite o novo tamanho do vetor: \n");
-                    scanf("%d",&vet[i].tamanho);
+                    printf("Digite quantas posições deseja adicionar: \n");
+                    scanf("%d",&num);
+                    vet[i].tamanho = vet[i].tamanho + num;
                     realocarMemoria(vet,i);
                 }
                 else
@@ -100,6 +107,19 @@ int main(){
 
                 break;
 
+            case 5: //Listar vetor de posição específica ordenado
+                printf("Digite a posicao que deseja ordenar o vetor: \n");
+                scanf("%d",&i);
+                vetor = (int*)malloc(sizeof(int)*(vet[i].cont));
+                transfereConteudo(vet,i,vetor);
+                insertionSort(vetor,vet[i].cont);
+                listaVetorOrdenado(vetor,vet[i].cont);
+
+
+                break;
+            case 6: //Listar todos os elementos ordenados
+
+                break;
             default:
                 printf("opcao inválida\n");
 
