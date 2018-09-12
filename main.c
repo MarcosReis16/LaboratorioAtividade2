@@ -8,14 +8,16 @@ int main(){
     int op,i,valor,num;
     int sair = 0;
     VetorPrincipal vet[10];
-    int *vetor;
+    int *vetor,totalposicoes,*vetortotal,contadortotal;
+    totalposicoes = contadortotal = 0;
 
     for(i=0;i<10;i++){
         vet[i].auxiliar = NULL;
-        vet[i].cont = 0;
         vet[i].tamanho = 0;
+        vet[i].cont = 0;
     }
     vetor = NULL;
+    vetortotal = NULL;
 
 
     while (!sair){
@@ -26,9 +28,6 @@ int main(){
                     if(vet[i].auxiliar != NULL){
                         free(vet[i].auxiliar);
                     }
-                }
-                if (vetor != NULL){
-                    free(vetor);
                 }
                 sair =1;
                 break;
@@ -108,18 +107,36 @@ int main(){
                 break;
 
             case 5: //Listar vetor de posição específica ordenado
-                printf("Digite a posicao que deseja ordenar o vetor: \n");
+                printf("Digite a posicao que deseja listar o vetor ordenado: \n");
                 scanf("%d",&i);
+                i = i-1;
                 vetor = (int*)malloc(sizeof(int)*(vet[i].cont));
                 transfereConteudo(vet,i,vetor);
                 insertionSort(vetor,vet[i].cont);
-                listaVetorOrdenado(vetor,vet[i].cont);
-
-
+                printf("Segue vetor ordenado: \n");
+                listaVetorInt(vetor,vet[i].cont);
+                if (vetor){
+                    free(vetor);
+                }
                 break;
-            case 6: //Listar todos os elementos ordenados
-
+            case 6: {//Listar todos os elementos ordenados
+                int total = 0;
+                int n = 0;
+                for (int i = 0; i < 10; i++)
+                    total += vet[i].cont;
+                
+                int *v = (int *)malloc(total * sizeof(int));
+                
+                for (int i = 0; i < 10; i++)
+                    for (int j = 0; j < vet[i].cont; j++)
+                        v[n++] = vet[i].auxiliar[j];
+                
+                insertionSort(v, total);
+                
+                listaVetorInt(v, total);
+                    
                 break;
+            }
             default:
                 printf("opcao inválida\n");
 

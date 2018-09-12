@@ -11,7 +11,7 @@ int menu(){
     printf("2 - Excluir\n");
     printf("3 - Listar\n");
     printf("4 - Redimensionar Espaço\n");
-    printf("5 - Ordena posicao vetor\n");
+    printf("5 - Lista Vetor Auxiliar Ordenado\n");
     scanf("%d", &op);
     return op;
 }
@@ -32,18 +32,26 @@ void realocarMemoria(VetorPrincipal *vet, int indice){
 }
 
 void apagaValorMemoria(VetorPrincipal *vet,int i, int valor){
-    int j,k;
-    for(j=0;vet[i].auxiliar[j]<vet[i].auxiliar[vet[i].cont];j++){
-        if(vet[i].auxiliar[j]==valor){
-            for(k=j;vet[i].auxiliar[j]<vet[i].auxiliar[vet[i].cont];k++){
-                if(vet[i].auxiliar[k+1]!=vet[i].auxiliar[vet[i].cont]){
-                    vet[i].auxiliar[k]=vet[i].auxiliar[k+1];
-                }
-            }
-        vet[i].cont--;
-        break;
-        }
+    int *v = (int *)malloc((vet[i].cont - 1) * sizeof(int));
+    
+    int find = 0;
+    
+    for (int j = 0, l = 0; j < vet[i].cont; j++) {
+        if (vet[i].auxiliar[j] != valor)
+            v[l++] = vet[i].auxiliar[j];
+        else
+            find = 1;
     }
+    
+    if (find) {
+        vet[i].cont--;
+    
+        free(vet[i].auxiliar);
+    
+        vet[i].auxiliar = v;
+    }
+    else
+        free(v);
 }
 
 void listaVetor(VetorPrincipal *vet, int i){
@@ -75,7 +83,7 @@ void insertionSort(int *vetor, int tamanho){
     }
 }
 
-void listaVetorOrdenado(int *vetor,int quantidade){
+void listaVetorInt(int *vetor,int quantidade){
     for(int i =0;i<quantidade;i++){
         printf("%d\n",vetor[i]);
     }
