@@ -124,17 +124,17 @@ int main(){
                 int n = 0;
                 for (int i = 0; i < 10; i++)
                     total += vet[i].cont;
-                
+
                 int *v = (int *)malloc(total * sizeof(int));
-                
+
                 for (int i = 0; i < 10; i++)
                     for (int j = 0; j < vet[i].cont; j++)
                         v[n++] = vet[i].auxiliar[j];
-                
+
                 insertionSort(v, total);
-                
+                printf("Segue todos os elementos ordenados:\n");
                 listaVetorInt(v, total);
-                    
+
                 break;
             }
             default:

@@ -12,6 +12,7 @@ int menu(){
     printf("3 - Listar\n");
     printf("4 - Redimensionar Espaço\n");
     printf("5 - Lista Vetor Auxiliar Ordenado\n");
+    printf("6 - Lista todos os elementos ordenados\n");
     scanf("%d", &op);
     return op;
 }
@@ -33,21 +34,21 @@ void realocarMemoria(VetorPrincipal *vet, int indice){
 
 void apagaValorMemoria(VetorPrincipal *vet,int i, int valor){
     int *v = (int *)malloc((vet[i].cont - 1) * sizeof(int));
-    
+
     int find = 0;
-    
+
     for (int j = 0, l = 0; j < vet[i].cont; j++) {
         if (vet[i].auxiliar[j] != valor)
             v[l++] = vet[i].auxiliar[j];
         else
             find = 1;
     }
-    
+
     if (find) {
         vet[i].cont--;
-    
+
         free(vet[i].auxiliar);
-    
+
         vet[i].auxiliar = v;
     }
     else
