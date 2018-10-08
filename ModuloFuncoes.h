@@ -14,3 +14,4 @@ void inserirValor(VetorPrincipal *vet, int i, int valor);
 void insertionSort(int *vetor, int tamanho);
 void transfereConteudo(VetorPrincipal *vet,int i,int *vetorAlvo);
 void listaVetorInt(int *vetor,int quantidade);
+void gravaArquivo(VetorPrincipal *vet);

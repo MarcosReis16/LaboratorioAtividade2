@@ -89,3 +89,45 @@ void listaVetorInt(int *vetor,int quantidade){
         printf("%d\n",vetor[i]);
     }
 }
+
+void gravaArquivo(VetorPrincipal *vet){
+    FILE *arq;
+    arq = fopen("atv3.txt","w");
+    //INDICE,QUANTIDADE DE ELEMENTOS,VALORES
+    if (arq==NULL)
+        printf("Erro na abertura do arquivo\n");
+    else{
+        for(int i=0;i<10;i++){
+            if (vet[i]->auxiliar != NULL){
+                fprintf(arq, "%d",i);
+                fprintf(arq, "%d",vet[i]->cont;
+                for(int j=0;j<vet[i]->cont;j++){
+                    fprintf(arq,"%d",vet[i]->auxiliar[j];
+                }
+                fprintf(arq,"%d","\n");
+            }
+        }
+    }
+}
+
+int lerArquivo(VetorPrincipal **vet){
+    FILE *arq;
+    arq = fopen("atv.txt","r");
+    if (arq==NULL){
+        printf("Erro na abertura do arquivo\n");
+        return 0;
+    }
+    else
+    {
+        while(
+        *vet[X]->auxiliar = (int*)malloc(sizeof(int)*(Y));
+    }
+        
+    
+    
+    
+    
+    
+    
+    
+}
