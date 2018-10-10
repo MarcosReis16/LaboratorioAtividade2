@@ -18,12 +18,16 @@ int main(){
     }
     vetor = NULL;
     vetortotal = NULL;
-
+    if(!lerArquivo(vet)){
+        printf("Arquivo base vazio. \n");
+    }
 
     while (!sair){
         op = menu();
         switch (op){
             case 0:
+
+                gravaArquivo(vet);
                 for(i=0;i<=9;i++){
                     if(vet[i].auxiliar != NULL){
                         free(vet[i].auxiliar);

@@ -98,36 +98,41 @@ void gravaArquivo(VetorPrincipal *vet){
         printf("Erro na abertura do arquivo\n");
     else{
         for(int i=0;i<10;i++){
-            if (vet[i]->auxiliar != NULL){
+            if (vet[i].auxiliar != NULL){
+                //salva posição
                 fprintf(arq, "%d",i);
-                fprintf(arq, "%d",vet[i]->cont;
-                for(int j=0;j<vet[i]->cont;j++){
-                    fprintf(arq,"%d",vet[i]->auxiliar[j];
+                //salva quant elementos para alocar
+                fprintf(arq, "%d",vet[i].cont);
+                for(int j=0;j<vet[i].cont;j++){
+                    fprintf(arq,"%d",vet[i].auxiliar[j]);
                 }
-                fprintf(arq,"%d","\n");
             }
         }
     }
+    fclose(arq);
 }
 
-int lerArquivo(VetorPrincipal **vet){
+int lerArquivo(VetorPrincipal *vet){
     FILE *arq;
-    arq = fopen("atv.txt","r");
+    int ind,qtd;
+    arq = fopen("atv3.txt","r");
     if (arq==NULL){
-        printf("Erro na abertura do arquivo\n");
         return 0;
     }
     else
     {
-        while(
-        *vet[X]->auxiliar = (int*)malloc(sizeof(int)*(Y));
+        while(!feof(arq)){
+            ind = qtd = 0;
+            //lê a posição que vai alocar
+            fscanf(arq,"%d",&ind);
+            //lê a quantidade de espaço alocado
+            fscanf(arq,"%d",&qtd);
+            vet[ind].auxiliar = (int *)malloc(sizeof(int)*qtd);
+            for(int i=0;i<qtd;i++){
+                fscanf(arq,"%d",&vet[ind].auxiliar[i]);
+            }
+        }
+        return 1;
     }
-        
-    
-    
-    
-    
-    
-    
-    
+    fclose(arq);
 }
